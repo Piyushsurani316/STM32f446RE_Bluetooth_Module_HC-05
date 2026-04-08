@@ -71,24 +71,4 @@ A mobile app (Arduino Bluetooth Controller) is used to send commands wirelessly 
 
 ---
 
-## 🧾 Code Snippet
 
-```c
-uint8_t rxData;
-
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-  if(huart->Instance == USART1)
-  {
-    if(rxData == 'N')
-    {
-      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-    }
-    else if(rxData == 'Y')
-    {
-      HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
-    }
-
-    HAL_UART_Receive_IT(&huart1, &rxData, 1);
-  }
-}
